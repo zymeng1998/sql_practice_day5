@@ -1,0 +1,2 @@
+-- ddl: create, drop, alter
+-- dml: update, insert, delete
