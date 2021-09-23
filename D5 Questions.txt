@@ -1,0 +1,94 @@
+1. What is an object in SQL?
+	SQL objects are schemas, journals, catalogs, tables, aliases, 
+	views, indexes, constraints, triggers, sequences, stored procedures, 
+	user-defined functions, user-defined types, global variables, and SQL packages.
+
+2. What is Index? What are the advantages and disadvantages of using Indexes?
+	Index is a database objects, on which optimizer depends to function. 
+	It is a seperate structure attached to a table, and contains pointers to the physical data.
+Advantages:
+	Reduce disk I/O.
+	Allow SQL Server to dind data without scanning the entire table.
+Disadvantages:
+	Additional disk space.
+	Insert, Update, Delete statments become slow.
+
+3. What are the types of Indexes?
+Clustered index: 
+	By defualt it is the primary key, but it does not have to.
+	Data is stored at the leaf level.
+	Data is sorted by the key.
+Unclustered index:
+	Uses cluster key or RID of a heap
+	Include stored at leaf
+
+4. Does SQL Server automatically create indexes when a table is created? If yes, under which constraints?
+Yes, with unique contraints.
+
+5. Can a table have multiple clustered index? Why?
+No. That the rule, wont make sense otherwise.
+
+6. Can an index be created on multiple columns? Is yes, is the order of columns matter?
+Yes & Yes, because an unclustered index is likely to be clustered in a different table.
+
+7. Can indexes be created on views?
+Yes.
+
+8. What is normalization? What are the steps (normal forms) to achieve normalization?
+Data normalization is a process of organizing data to minimize redundancy (data duplication), which helps ensure data consistency.
+	1. Make the data in each column atomic, no multiple values in the same column seperated by a comma.
+	2. No repeating column groups. 
+	3. identify each record using primary key.
+	4. Unique records.
+
+	5. Move redundant data to a different table, and main the same relationship using a foreign key.
+
+	6. Does not contain columns that are not fully dependent on primary key.
+
+9. What is denormalization and under which scenarios can it be preferable?
+Add redundancies deliberately to improve performance.
+
+10.How do you achieve Data Integrity in SQL Server?
+By maintaining Domain integrity, entity integrity and referential integrity. 
+	(atomic column value,
+	 every table with a primary key, 
+	use foreign keys so that a change in the table with primary key table can only be made 
+		after similar changes are made to all tables 
+			with a foreign key referring to the primary key of the said priomary key table).
+
+11.What are the different kinds of constraint do SQL Server have?
+Contrainsts are defined rules to enforce integrity. There are column constraints and table constraints.
+Types:
+	Not Null;
+	Unique;
+	Primary key
+	Foreign key
+	Check constraints
+
+12.What is the difference between Primary Key and Unique Key?
+A table can have only one primary key with no null. 
+A table can have multiple unique keys with at most 1 null.
+
+13.What is foreign key?
+It is a column or a combination of columns to establish a link beween two tables.
+Normally, it is a primary in another table but doesnt have to be.
+
+14.Can a table have multiple foreign keys?
+Yes
+
+15.Does a foreign key have to be unique? Can it be null?
+Yes. No.
+
+16. Can we create indexes on Table Variables or Temporary Tables?
+No and Yes.
+
+17. What is Transaction? What types of transaction levels are there in SQL Server?
+A transaction is a single unit of work. If a transaction is successful, 
+all of the data modifications made during the transaction are committed and become a permanent part of the database.
+
+Levels:
+	read uncommited
+	read commited
+	repeatable read
+	snapshot isolation
+	serializable
